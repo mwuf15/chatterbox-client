@@ -20,13 +20,14 @@ var Parse = {
     });
 
   },
-
+  // sending a GET request to server. 2) server will respond back with data
   readAll: function(successCB, errorCB = null) {
     $.ajax({
       url: Parse.server,
       type: 'GET',
       data: { order: '-createdAt' },
       contentType: 'application/json',
+      //data called back from server --> successCB
       success: successCB,
       error: errorCB || function(error) {
         console.error('chatterbox: Failed to fetch messages', error);
