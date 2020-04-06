@@ -30,8 +30,9 @@ var App = {
       // push the roomnames into roomStorage
 
       for (var i = 0; i < data.results.length; i++) {
-        Rooms.roomStorage.push(data.results[i].roomname);
+        Rooms.roomStorage.push(data.results[i]);
       }
+      // console.log(Rooms.roomStorage)
 
       // Rooms.roomStorage = roomarrayresults;
       Messages.storage = data.results;

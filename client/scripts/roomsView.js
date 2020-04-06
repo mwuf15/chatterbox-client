@@ -7,21 +7,29 @@ var RoomsView = {
   },
 
   render: function() {
+    // for (var i = 0; i < Messages.storage.length; i++) {
+    //   MessagesView.renderMessage(Messages.storage[i]);
+    // }
     for (var i = 0; i < Rooms.roomStorage.length; i++) {
-      RoomsView.renderRoom(Rooms.roomStorage[i]);
+      if (Rooms.roomStorage[i].roomname === undefined) {
+        RoomsView.renderRoom('lobby');
+      } else {
+        RoomsView.renderRoom(Rooms.roomStorage[i].roomname);
+      }
     }
   },
 
   roomsRender: _.template(`
 
       <div class="rooms">
-        <option value="roomname"><%= roomname %></option>
+        <option value="roomname"><%- roomname %></option>
       </div>
 
     `),
 
   renderRoom: function(room) {
-    RoomsView.$select.append(RoomsView.roomsRender(room));
+    // RoomsView.$select.append(RoomsView.roomsRender(room));
+    RoomsView.$select.append('<option value="roomname"><%- roomname %></option>');
   },
 
 };
