@@ -21,7 +21,9 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
-
+      Messages.storage = data.results;
+      // console.log('this is message storage',Messages.storage)
+      MessagesView.render();
       callback();
     });
   },
