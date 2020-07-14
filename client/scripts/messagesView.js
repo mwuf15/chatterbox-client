@@ -16,9 +16,14 @@ var MessagesView = {
   renderMessage: function(message) {
     // input is a message object
     // adds a child to the #chats div
-
+    if (message.username === undefined){
+      message.username = 'no username'
+    }
+    if (message.text === undefined) {
+      message.text = 'message not found';
+    }
     // use message view's render method to create a new message div
-    console.log('username:',message.username)
+    // console.log('username:',message.username)
     var $messageDiv = MessageView.render(message);
     // get document element by id: chat
     // prepend message div to that element
