@@ -5,6 +5,9 @@ var RoomsView = {
 
   initialize: function() {
     RoomsView.$button.on('click', Rooms.add);
+    RoomsView.renderRoom('lobby');
+    console.log('should be lobby element', $('#lobby'));
+    $('#lobby').attr("selected", "selected");
     console.log('options: ', $('#rooms option'));
     RoomsView.$select.on('change', function(event) {
       console.log('selected:', $("select option:selected").text());
@@ -17,15 +20,14 @@ var RoomsView = {
       if (message.roomname !== undefined) {
         var safeRoom = _.template(`<%-roomname%>`);
         var roomName = safeRoom(message);
-        Rooms.storage[roomName] = roomName;
+        // console.log('this is :', roomName)
+        if (roomName !== "" && Rooms.storage[roomName] === undefined) {
+          Rooms.storage[roomName] = roomName;
+          RoomsView.renderRoom(roomName);
+        }
       }
     }
-    RoomsView.$select.html("");
-    for (var room in Rooms.storage) {
-      if (room !== "") {
-        RoomsView.renderRoom(room);
-      }
-    }
+
   },
 
   renderRoom: function(roomName) {

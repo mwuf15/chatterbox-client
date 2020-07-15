@@ -6,10 +6,13 @@ var MessagesView = {
     // console.log('this will get call');
   },
 
-  render: function(messagesList) {
+  render: function(messagesList, roomName) {
     MessagesView.$chats.html("");
     for (var i = messagesList.length - 1; i >= 0; i--) {
-      MessagesView.renderMessage(messagesList[i]);
+      //if messagelist.roomname === roomName
+      if (messagesList[i].roomname === roomName) {
+        MessagesView.renderMessage(messagesList[i]);
+      }
     }
   },
 
@@ -28,5 +31,11 @@ var MessagesView = {
     // get document element by id: chat
     // prepend message div to that element
     MessagesView.$chats.prepend($messageDiv);
+  },
+
+  filterMessages: function(roomName) {
+    //loop thru messagelist
+    //if messagelist.roomname === roomName
+    //renderMessage(messagelist[i])
   }
 };
