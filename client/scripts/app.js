@@ -31,8 +31,7 @@ var App = {
       console.log(data);
       Messages.storage = data.results;
       // console.log('this is message storage',Messages.storage)
-      var selectedRoom = $("select option:selected").text();
-      MessagesView.render(Messages.storage, selectedRoom);
+      MessagesView.filterMessages();
       callback();
     });
   },

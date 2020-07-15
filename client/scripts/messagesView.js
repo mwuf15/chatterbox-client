@@ -33,9 +33,8 @@ var MessagesView = {
     MessagesView.$chats.prepend($messageDiv);
   },
 
-  filterMessages: function(roomName) {
-    //loop thru messagelist
-    //if messagelist.roomname === roomName
-    //renderMessage(messagelist[i])
+  filterMessages: function() {
+    var selectedRoom = $("select option:selected").text();
+    MessagesView.render(Messages.storage, selectedRoom);
   }
 };
