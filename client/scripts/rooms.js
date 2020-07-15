@@ -1,9 +1,11 @@
 var Rooms = {
 
+  storage: {},
+
   add: function(event) {
     var roomName = $('#roomid').val();
-    console.log('room:',roomName);
+    Rooms.storage[roomName] = roomName;
     RoomsView.renderRoom(roomName);
-    console.log('click!');
+    $("#roomid").val("");
   }
 };

@@ -15,6 +15,11 @@ var App = {
     App.startSpinner();
     App.fetch(App.stopSpinner);
 
+    setInterval(()=>{
+      App.startSpinner();
+      App.fetch(App.stopSpinner);
+    }, 10000)
+
   },
 
   fetch: function(callback = ()=>{}) {
@@ -23,7 +28,8 @@ var App = {
       console.log(data);
       Messages.storage = data.results;
       // console.log('this is message storage',Messages.storage)
-      MessagesView.render();
+      MessagesView.render(Messages.storage);
+      RoomsView.render();
       callback();
     });
   },

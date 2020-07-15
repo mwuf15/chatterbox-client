@@ -12,11 +12,10 @@ var FormView = {
     var message = {
       username: App.username,
       text: $("#message").val(),
-      roomname: 'Lobby'
+      roomname: $("select option:selected").text()
     };
+    console.log(message);
     Parse.create(message, ()=>{MessagesView.renderMessage(message)});
-    console.log('this is message:', message)
-    console.log('click!');
     $("#message").val("")
   },
 

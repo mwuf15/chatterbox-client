@@ -8,16 +8,23 @@ var RoomsView = {
   },
 
   render: function() {
+    for (var message of Messages.storage) {
+      if (message.roomname !== undefined) {
+        var safeRoom = _.template(`<%-roomname%>`);
+        var roomName = safeRoom(message);
+        Rooms.storage[roomName] = roomName;
+      }
+    }
+    RoomsView.$select.html("");
+    for (var room in Rooms.storage) {
+      if (room !== "") {
+        RoomsView.renderRoom(room);
+      }
+    }
   },
 
   renderRoom: function(roomName) {
-
     var $room = `<option id="${roomName}">${roomName}</option>`;
-    console.log(roomName);
     RoomsView.$select.append($room);
-    // $(`#${roomName}`).val(roomName);
-    // var roomOption = document.createElement("option");
-    // roomOption.text = roomName;
-    // RoomsView.$select.add(roomOption, null);
   }
 };
