@@ -3,7 +3,11 @@ var MessagesView = {
   $chats: $('#chats'),
 
   initialize: function() {
+    console.log($('.username'))
     // console.log('this will get call');
+    // $('#username').click(function(){
+    //   console.log('clicked');
+    // })
   },
 
   render: function(messagesList, roomName) {
@@ -14,6 +18,12 @@ var MessagesView = {
         MessagesView.renderMessage(messagesList[i]);
       }
     }
+    for (var friend in Friends.storage) {
+      $(`div:contains(${friend})`).addClass("friend");
+    }
+    // console.log($('.username'))
+    $('.username').click( Friends.addFriends)
+
   },
 
   renderMessage: function(message) {
