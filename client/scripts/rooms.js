@@ -1,6 +1,6 @@
 var Rooms = {
 
-  storage: {},
+  storage: {lobby:'lobby'},
 
   add: function(event) {
     var roomName = $('#roomid').val();

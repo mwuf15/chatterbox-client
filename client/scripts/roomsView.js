@@ -5,6 +5,11 @@ var RoomsView = {
 
   initialize: function() {
     RoomsView.$button.on('click', Rooms.add);
+    console.log('options: ', $('#rooms option'));
+    RoomsView.$select.on('change', function(event) {
+      console.log('selected:', $("select option:selected").text());
+
+    });
   },
 
   render: function() {

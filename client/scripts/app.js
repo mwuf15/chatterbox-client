@@ -13,7 +13,10 @@ var App = {
 
     // Fetch initial batch of messages
     App.startSpinner();
-    App.fetch(App.stopSpinner);
+    App.fetch(() => {
+      RoomsView.render();
+      App.stopSpinner();
+    });
 
     setInterval(()=>{
       App.startSpinner();
@@ -29,7 +32,6 @@ var App = {
       Messages.storage = data.results;
       // console.log('this is message storage',Messages.storage)
       MessagesView.render(Messages.storage);
-      RoomsView.render();
       callback();
     });
   },
